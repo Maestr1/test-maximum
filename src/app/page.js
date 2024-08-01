@@ -1,11 +1,9 @@
-import Main from '@/app/Main';
+import Main from '@components/Main/Main';
 
 
-export default async function Home() {
+export default function Home() {
 
   return (
-    <main>
-      <Main/>
-    </main>
+    <Main/>
   );
 }

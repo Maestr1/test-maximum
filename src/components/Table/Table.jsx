@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {
-  Pagination,
-  styled,
   Table as MuiTable,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow, Typography
+  TableRow
 } from '@mui/material';
 import TablePagination from '@mui/material/TablePagination';
 import styles from './Table.module.scss';
@@ -30,17 +28,9 @@ function Table(props) {
     setPage(newPage);
   };
 
-  const handleChangePaginationPage = (event, newPage) => {
-    setPage(newPage);
-  };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  };
-
-  const handlePageSizeChange = (event) => {
-    setRowsPerPage(event.target.value);
   };
 
   function formatDate(date) {
@@ -51,7 +41,7 @@ function Table(props) {
   }
 
   function formatPrice(price) {
-    return price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: '0' });
+    return price ? price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: '0' }) : '-';
   }
 
   function calculateTotalPages(data) {
@@ -79,7 +69,7 @@ function Table(props) {
                   {car._id}
                 </TableCell>
                 <TableCell>
-                  {`${car.mark} ${car.model}`}
+                  {`${car.mark} ${car.model ? `${car.model}` : '-'}`}
                 </TableCell>
                 <TableCell>
                   {`${car.engine.volume} ${car.engine.transmission} (${car.engine.power} л.с.) ${car.drive === '4WD' ? '4WD' : ''}`}
@@ -102,7 +92,7 @@ function Table(props) {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 20, 50]}
-        labelRowsPerPage='Строк на странице'
+        labelRowsPerPage="Строк на странице"
         component="div"
         count={data.length}
         rowsPerPage={rowsPerPage}
