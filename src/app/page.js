@@ -1,4 +1,5 @@
 import {getStock} from '@utils/mongo/stock';
+import Main from '@/app/Main';
 
 
 async function fetchStock() {
@@ -14,11 +15,7 @@ export default async function Home() {
 
   return (
     <main>
-      <ul>
-        {data.map(car => (
-          <li>{car.model}</li>
-        ))}
-      </ul>
+      <Main data={data}/>
     </main>
   );
 }
