@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Table as MuiTable,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from '@mui/material';
-import TablePagination from '@mui/material/TablePagination';
+
 import { Table as AntTable } from 'antd';
-import styles from './Table.module.scss';
 
 function Table(props) {
   const [formattedCarList, setFormattedCarList] = useState([]);
@@ -39,7 +30,7 @@ function Table(props) {
     {
       title: 'Дата создания',
       dataIndex: 'createdAt',
-      width: '140px',
+      width: '150px',
     },
   ];
 
@@ -87,15 +78,7 @@ function Table(props) {
 
   return (
     <>
-      <AntTable
-        columns={columns}
-        dataSource={formattedCarList}
-        pagination={
-          {
-            // pageSize: 10,
-          }
-        }
-      />
+      <AntTable columns={columns} dataSource={formattedCarList} />
     </>
   );
 }

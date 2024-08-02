@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'antd';
 import styles from './MarkSelector.module.scss';
 
 function MarkSelector(props) {
   const [selectedFilter, setSelectedFilter] = useState(null);
-  const [data, setData] = useState([]);
 
   function buttonHandler(event) {
     const value = event.target.closest('button').value;

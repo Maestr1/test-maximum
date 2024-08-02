@@ -23,7 +23,7 @@ async function init() {
 export async function getStock() {
   try {
     if (!stock) await init();
-    const data = await stock.find({}).limit(100).toArray();
+    const data = await stock.find({}).toArray();
     return { data };
   } catch (error) {
     throw new Error('Не удалось получить данные');

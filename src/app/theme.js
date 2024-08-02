@@ -11,7 +11,7 @@ const roboto = Roboto({
 const theme = {
   token: {
     fontFamily: roboto.style.fontFamily,
-  }
-}
+  },
+};
 
 export default theme;

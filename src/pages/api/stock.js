@@ -1,4 +1,4 @@
-import {getStock} from '@utils/mongo/stock';
+import { getStock } from '@utils/mongo/stock';
 
 const handler = async (req, res) => {
   if (req.method === 'GET') {

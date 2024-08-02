@@ -3,8 +3,7 @@ import { getAggregateByMark } from '@utils/mongo/stock';
 const handler = async (req, res) => {
   if (req.method === 'GET') {
     try {
-      const { mark } = req.query;
-      const { data, error } = await getAggregateByMark(mark);
+      const { data, error } = await getAggregateByMark(req.query.mark);
       // Генерация исключения для его обработки в catch
       if (error) throw new Error(error);
 
