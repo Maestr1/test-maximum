@@ -25,7 +25,7 @@ export async function getStock() {
     if (!stock) await init();
     const data = await stock
       .find({})
-      .limit(30)
+      // .limit(100)
       .toArray();
     return { data };
   } catch (error) {
