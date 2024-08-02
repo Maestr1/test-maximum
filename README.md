@@ -10,6 +10,7 @@
 
 * React 18
 * Next 14
+* MongoDB 6.8
 * Ant Design 5.0
 * SCSS
 * NodeJS v20.16.0 or later
