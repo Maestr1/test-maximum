@@ -5,9 +5,14 @@
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
-  gap: 8px;
+  column-gap: 6px;
 }
 
-.item {
+.selected {
+  font-weight: bold;
+}
 
+.count {
+  font-size: 12px;
+  display: inline-block;
 }

@@ -1,22 +1,32 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { Button } from 'antd';
 import styles from './MarkSelector.module.scss';
 
 function MarkSelector(props) {
-
+  const [selectedFilter, setSelectedFilter] = useState(null);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/mark_list')
-      .then(res => res.json())
-      .then(data => setData(data.data))
-      .catch((error) => console.error(error));
-  }, []);
-
+  function buttonHandler(event) {
+    const value = event.target.closest('button').value;
+    props.markSelectorHandler(value);
+    setSelectedFilter(value);
+  }
 
   return (
     <ul className={styles.list}>
-      {data.map((mark) => (
-        <li className={styles.item} key={mark.name}>{`${mark.name} ${mark.count}`}</li>
+      {props.markList.map((mark) => (
+        <li className={styles.item} key={mark.name}>
+          <Button
+            className={selectedFilter === mark.name ? styles.selected : ''}
+            onClick={buttonHandler}
+            value={mark.name}
+            style={{ paddingInline: 2, paddingBlock: 0 }}
+            type="link"
+          >
+            {mark.name}
+          </Button>
+          <span className={styles.count}> {mark.count}</span>
+        </li>
       ))}
     </ul>
   );
